@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import signupBackground from "@/Assets/background_signup.png";
 
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -14,8 +15,12 @@ const SignupPage = () => {
     <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#f3f7ff,_transparent_45%),radial-gradient(circle_at_bottom,_#f9fbff,_transparent_40%)]">
       <div className="grid min-h-screen lg:grid-cols-2">
         {/* Left panel */}
-        <div className="hidden lg:flex gradient-primary items-center justify-center p-16">
-          <div className="max-w-md text-primary-foreground space-y-6">
+        <div
+          className="hidden lg:flex items-center justify-center p-10 xl:p-16 bg-cover bg-right bg-no-repeat relative"
+          style={{ backgroundImage: `url(${signupBackground})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10" />
+          <div className="max-w-md text-primary-foreground space-y-6 relative z-10">
             <div className="flex items-center gap-2">
               <div className="w-11 h-11 rounded-2xl bg-primary-foreground/20 flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-primary-foreground" />
@@ -26,14 +31,14 @@ const SignupPage = () => {
               <p className="inline-flex items-center gap-2 text-sm font-medium uppercase tracking-[0.14em] bg-primary-foreground/15 text-primary-foreground px-3 py-1 rounded-full w-fit">
                 Join the community
               </p>
-              <h2 className="text-4xl font-bold leading-tight">Start your learning journey today.</h2>
+              <h2 className="text-3xl xl:text-4xl font-bold leading-tight">Start your learning journey today.</h2>
               <p className="text-primary-foreground/80">Learn with mentors, build projects, and grow faster with a supportive cohort.</p>
             </div>
           </div>
         </div>
 
         {/* Form */}
-        <div className="flex items-center justify-center px-6 py-12 lg:px-16">
+        <div className="flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12 lg:px-16">
           <Card className="w-full max-w-md shadow-2xl border-border/60">
             <CardHeader className="space-y-4">
               <div className="lg:hidden flex items-center gap-2">
@@ -42,7 +47,7 @@ const SignupPage = () => {
                 </div>
                 <span className="text-lg font-bold text-foreground">SkillBridge</span>
               </div>
-              <div className="flex items-start justify-between gap-3">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
                 <div>
                   <CardTitle className="text-2xl">Create an account</CardTitle>
                   <CardDescription>Get started with SkillBridge for free.</CardDescription>

@@ -30,14 +30,14 @@ const Navbar = () => {
 
   return (
     <nav className="sticky top-0 z-50 glass border-b border-border/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/landing" onClick={handleBrandClick} className="flex items-center gap-2">
+          <Link to="/landing" onClick={handleBrandClick} className="flex items-center gap-2 min-w-0">
             <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
               <BookOpen className="w-4 h-4 text-primary-foreground" />
             </div>
-            <span className="text-lg font-bold text-foreground">SkillBridge</span>
+            <span className="text-base sm:text-lg font-bold text-foreground truncate">SkillBridge</span>
           </Link>
 
           {/* Desktop Nav */}
@@ -112,7 +112,7 @@ const Navbar = () => {
           </div>
 
           {/* Mobile hamburger */}
-          <button className="md:hidden p-2 text-foreground" onClick={() => setMobileOpen(!mobileOpen)}>
+          <button className="md:hidden p-2 text-foreground shrink-0" onClick={() => setMobileOpen(!mobileOpen)}>
             {mobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
@@ -120,7 +120,7 @@ const Navbar = () => {
 
       {/* Mobile menu */}
       {mobileOpen && (
-        <div className="md:hidden border-t border-border bg-card px-4 py-4 space-y-2">
+        <div className="md:hidden border-t border-border bg-card px-3 sm:px-4 py-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
           <Button
             variant="outline"
             size="sm"

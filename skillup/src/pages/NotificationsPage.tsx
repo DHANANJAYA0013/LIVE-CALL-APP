@@ -43,15 +43,15 @@ const NotificationsPage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-6">
+      <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-6">
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Notifications</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Notifications</h1>
             <p className="text-muted-foreground mt-1">Stay on top of session updates and messages.</p>
           </div>
-          <div className="flex gap-2">
-            <Button variant="outline" size="sm">Mark all as read</Button>
-            <Button size="sm" className="gradient-primary text-primary-foreground border-0">Notification settings</Button>
+          <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+            <Button variant="outline" size="sm" className="w-full sm:w-auto">Mark all as read</Button>
+            <Button size="sm" className="gradient-primary text-primary-foreground border-0 w-full sm:w-auto">Notification settings</Button>
           </div>
         </div>
 
@@ -72,7 +72,7 @@ const NotificationsPage = () => {
               const Icon = item.icon;
               const tone = toneMap[item.tone] ?? toneMap.neutral;
               return (
-                <div key={item.id} className="flex gap-4 p-4 sm:p-5">
+                <div key={item.id} className="flex flex-col sm:flex-row gap-3 sm:gap-4 p-4 sm:p-5">
                   <div className={`h-10 w-10 rounded-lg border flex items-center justify-center ${tone}`}>
                     <Icon className="w-5 h-5" />
                   </div>
@@ -83,7 +83,7 @@ const NotificationsPage = () => {
                     </div>
                     <p className="text-sm text-muted-foreground mt-1">{item.message}</p>
                   </div>
-                  <Button variant="ghost" size="sm" className="self-start">Mark read</Button>
+                  <Button variant="ghost" size="sm" className="self-start sm:self-center">Mark read</Button>
                 </div>
               );
             })}

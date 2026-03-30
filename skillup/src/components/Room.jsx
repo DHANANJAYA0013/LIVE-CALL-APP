@@ -16,7 +16,7 @@ export default function Room({ localStream, remoteStreams, roomId, onLeave }) {
     <div className="h-screen w-full flex flex-col bg-background font-sans relative overflow-hidden">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(239_84%_67%/0.08),transparent_60%)] pointer-events-none" />
 
-      <header className="relative z-10 px-4 sm:px-6 py-3 border-b border-border/60 bg-card/80 backdrop-blur-xl flex items-center gap-3">
+      <header className="relative z-10 px-3 sm:px-6 py-3 border-b border-border/60 bg-card/80 backdrop-blur-xl flex items-center gap-2 sm:gap-3">
         <div className="w-9 h-9 rounded-xl gradient-primary text-primary-foreground flex items-center justify-center shadow-card">
           <svg width="22" height="22" viewBox="0 0 48 48" fill="none">
             <circle cx="24" cy="24" r="23" stroke="currentColor" strokeWidth="2.5" />
@@ -44,7 +44,7 @@ export default function Room({ localStream, remoteStreams, roomId, onLeave }) {
         </div>
 
         <button
-          className="rounded-lg border border-destructive/25 bg-destructive/10 px-3 py-2 text-xs sm:text-sm font-medium text-destructive flex items-center gap-1.5 transition-colors hover:bg-destructive/15"
+          className="rounded-lg border border-destructive/25 bg-destructive/10 px-2.5 sm:px-3 py-2 text-xs sm:text-sm font-medium text-destructive flex items-center gap-1.5 transition-colors hover:bg-destructive/15"
           onClick={onLeave}
         >
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
@@ -52,11 +52,11 @@ export default function Room({ localStream, remoteStreams, roomId, onLeave }) {
             <polyline points="16 17 21 12 16 7" />
             <line x1="21" y1="12" x2="9" y2="12" />
           </svg>
-          Leave
+          <span className="hidden sm:inline">Leave</span>
         </button>
       </header>
 
-      <main className="relative z-10 flex-1 p-4 sm:p-5 lg:p-6 pb-28 overflow-auto">
+      <main className="relative z-10 flex-1 p-3 sm:p-5 lg:p-6 pb-24 sm:pb-28 overflow-auto">
         {peerCount === 0 ? (
           <div className="h-full min-h-[320px] flex flex-col items-center justify-center text-center rounded-2xl border border-border/60 bg-card/60 backdrop-blur-md px-6">
             <div className="w-16 h-16 rounded-full border-2 border-primary/35 bg-primary/10 animate-pulse mb-4" />
@@ -76,7 +76,7 @@ export default function Room({ localStream, remoteStreams, roomId, onLeave }) {
         )}
       </main>
 
-      <div className="absolute right-4 bottom-4 sm:right-6 sm:bottom-6 w-32 sm:w-44 md:w-52 z-20 rounded-xl overflow-hidden border border-primary/30 shadow-elevated bg-card">
+      <div className="absolute right-3 bottom-3 sm:right-6 sm:bottom-6 w-28 sm:w-44 md:w-52 z-20 rounded-xl overflow-hidden border border-primary/30 shadow-elevated bg-card">
         <VideoTile stream={localStream} label="You" isLocal />
       </div>
 

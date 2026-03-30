@@ -46,7 +46,7 @@ const ChatPage = () => {
   return (
     <div className="min-h-screen bg-[radial-gradient(circle_at_20%_20%,#f3f5ff,transparent_30%),radial-gradient(circle_at_80%_0,#f6f7ff,transparent_28%),#f9fafb]">
       <Navbar />
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Link to={mentor ? `/mentors/${mentor.id}` : "/mentors"} className="inline-flex items-center gap-1 hover:text-foreground">
             <ArrowLeft className="w-4 h-4" /> Back
@@ -64,7 +64,7 @@ const ChatPage = () => {
                 className="w-14 h-14 rounded-xl object-cover border border-border/70"
               />
               <div>
-                <CardTitle className="text-xl">
+                <CardTitle className="text-lg sm:text-xl">
                   {mentor?.name ?? "Mentor"}
                 </CardTitle>
                 <CardDescription className="flex items-center gap-2">
@@ -81,13 +81,13 @@ const ChatPage = () => {
           </CardHeader>
 
           <CardContent className="space-y-4">
-            <div className="bg-muted/40 border border-border/70 rounded-xl p-4 h-[480px] overflow-y-auto space-y-4">
+            <div className="bg-muted/40 border border-border/70 rounded-xl p-3 sm:p-4 h-[55vh] min-h-[320px] max-h-[520px] overflow-y-auto space-y-4">
               {messages.map((msg) => {
                 const isMe = msg.author === "You";
                 return (
                   <div key={msg.id} className={`flex ${isMe ? "justify-end" : "justify-start"}`}>
                     <div
-                      className={`max-w-[80%] rounded-2xl px-4 py-3 shadow-sm border ${
+                      className={`max-w-[92%] sm:max-w-[80%] rounded-2xl px-4 py-3 shadow-sm border ${
                         isMe
                           ? "bg-primary text-primary-foreground border-primary/40"
                           : "bg-card text-foreground border-border/70"
@@ -104,14 +104,14 @@ const ChatPage = () => {
               })}
             </div>
 
-            <form onSubmit={handleSend} className="flex gap-3">
+            <form onSubmit={handleSend} className="flex flex-col sm:flex-row gap-3">
               <Input
                 value={draft}
                 onChange={(e) => setDraft(e.target.value)}
                 placeholder="Write a message..."
                 className="bg-white"
               />
-              <Button type="submit" className="gradient-primary text-primary-foreground border-0 px-5 gap-2 hover:opacity-90">
+              <Button type="submit" className="gradient-primary text-primary-foreground border-0 px-5 gap-2 hover:opacity-90 w-full sm:w-auto">
                 <Send className="w-4 h-4" /> Send
               </Button>
             </form>

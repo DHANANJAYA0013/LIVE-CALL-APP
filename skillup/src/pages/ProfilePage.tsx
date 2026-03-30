@@ -15,9 +15,9 @@ const ProfilePage = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Profile</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Profile</h1>
           <p className="text-muted-foreground mt-1">Edit your profile, update your password, and manage teaching skills.</p>
         </div>
 
@@ -42,7 +42,7 @@ const ProfilePage = () => {
 
           <div className="lg:col-span-2 space-y-6">
             <Card className="shadow-card">
-              <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-4">
+              <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-0 gap-3 pb-4">
                 <div>
                   <CardTitle className="text-xl">Edit profile</CardTitle>
                   <CardDescription>Basic info, bio, and teaching role.</CardDescription>
@@ -90,7 +90,7 @@ const ProfilePage = () => {
             </Card>
 
             <Card className="shadow-card">
-              <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-4">
+              <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-0 gap-3 pb-4">
                 <div>
                   <CardTitle className="text-lg">Skills (for teachers)</CardTitle>
                   <CardDescription>Showcase the topics you mentor in.</CardDescription>
@@ -118,7 +118,7 @@ const ProfilePage = () => {
             </Card>
 
             <Card className="shadow-card">
-              <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-4">
+              <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-0 gap-3 pb-4">
                 <div>
                   <CardTitle className="text-lg">Create a session</CardTitle>
                   <CardDescription>Set up a new class slot for learners.</CardDescription>
@@ -164,7 +164,7 @@ const ProfilePage = () => {
             </Card>
 
             <Card className="shadow-card">
-              <CardHeader className="flex flex-row items-start justify-between space-y-0 pb-4">
+              <CardHeader className="flex flex-col sm:flex-row items-start sm:items-center justify-between space-y-0 gap-3 pb-4">
                 <div>
                   <CardTitle className="text-lg">Change password</CardTitle>
                   <CardDescription>Secure your account with a new password.</CardDescription>
@@ -172,7 +172,7 @@ const ProfilePage = () => {
                 <Button size="sm">Update password</Button>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div className="space-y-1.5">
                     <Label htmlFor="currentPassword">Current password</Label>
                     <Input id="currentPassword" type="password" defaultValue="********" className="bg-card" />

@@ -18,19 +18,19 @@ const TeacherDashboardPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
-        <div className="flex items-center justify-between mb-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-foreground">Teacher Dashboard</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Teacher Dashboard</h1>
             <p className="text-muted-foreground mt-1">Manage your skills, bookings, and earnings</p>
           </div>
-          <Button className="gradient-primary text-primary-foreground border-0 gap-2">
+          <Button className="gradient-primary text-primary-foreground border-0 gap-2 w-full sm:w-auto">
             <Plus className="w-4 h-4" /> Add Skill
           </Button>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {teacherStats.map((stat) => (
             <div key={stat.label} className="bg-card rounded-xl shadow-card border border-border/50 p-5">
               <div className={`w-10 h-10 rounded-lg ${stat.color} flex items-center justify-center mb-3`}>
@@ -43,7 +43,7 @@ const TeacherDashboardPage = () => {
         </div>
 
         {/* Tabs */}
-        <div className="flex gap-1 bg-muted p-1 rounded-lg mb-6 w-fit">
+        <div className="flex gap-1 bg-muted p-1 rounded-lg mb-6 w-full sm:w-fit overflow-x-auto">
           {(["skills", "bookings", "earnings"] as const).map((tab) => (
             <button
               key={tab}
@@ -103,7 +103,7 @@ const TeacherDashboardPage = () => {
         {activeTab === "bookings" && (
           <div className="space-y-3">
             {sessions.map((session) => (
-              <div key={session.id} className="bg-card rounded-xl shadow-card border border-border/50 p-5 flex items-center justify-between">
+              <div key={session.id} className="bg-card rounded-xl shadow-card border border-border/50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
                 <div>
                   <h3 className="font-medium text-foreground">{session.skillTitle}</h3>
                   <p className="text-sm text-muted-foreground">{session.date} at {session.time}</p>

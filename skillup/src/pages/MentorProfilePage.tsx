@@ -24,7 +24,7 @@ const MentorProfilePage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <Link to="/mentors" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
           <ArrowLeft className="w-4 h-4" /> Back to Mentors
         </Link>
@@ -32,13 +32,13 @@ const MentorProfilePage = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Main content */}
           <div className="lg:col-span-2 space-y-8">
-            <div className="bg-card rounded-xl shadow-card border border-border/50 p-6">
-              <div className="flex items-start gap-5">
+            <div className="bg-card rounded-xl shadow-card border border-border/50 p-5 sm:p-6">
+              <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-5">
                 <img src={mentor.avatar} alt={mentor.name} className="w-20 h-20 rounded-xl object-cover" />
-                <div>
-                  <h1 className="text-2xl font-bold text-foreground">{mentor.name}</h1>
+                <div className="min-w-0">
+                  <h1 className="text-xl sm:text-2xl font-bold text-foreground">{mentor.name}</h1>
                   <p className="text-muted-foreground">{mentor.title}</p>
-                  <div className="flex items-center gap-4 mt-3">
+                  <div className="flex flex-wrap items-center gap-3 sm:gap-4 mt-3">
                     <div className="flex items-center gap-1">
                       <Star className="w-4 h-4 fill-accent text-accent" />
                       <span className="text-sm font-medium">{mentor.rating}</span>
@@ -96,7 +96,7 @@ const MentorProfilePage = () => {
 
           {/* Sidebar */}
           <div className="space-y-6">
-            <div className="bg-card rounded-xl shadow-card border border-border/50 p-6 sticky top-24">
+            <div className="bg-card rounded-xl shadow-card border border-border/50 p-6 lg:sticky lg:top-24">
               <div className="text-center mb-6">
                 <div className="text-3xl font-bold text-foreground">₹{mentor.pricePerSession}</div>
                 <div className="text-sm text-muted-foreground">per session</div>

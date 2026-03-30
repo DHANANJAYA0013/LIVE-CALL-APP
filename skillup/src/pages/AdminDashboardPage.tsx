@@ -21,14 +21,14 @@ const AdminDashboardPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Admin Dashboard</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Admin Dashboard</h1>
           <p className="text-muted-foreground mt-1">Platform overview and management</p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {adminStats.map((stat) => (
             <div key={stat.label} className="bg-card rounded-xl shadow-card border border-border/50 p-5">
               <div className="flex items-center justify-between mb-3">
@@ -52,7 +52,7 @@ const AdminDashboardPage = () => {
             <h2 className="text-lg font-semibold text-foreground mb-4">Pending Mentor Approvals</h2>
             <div className="space-y-3">
               {pendingMentors.map((m) => (
-                <div key={m.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
+                <div key={m.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg bg-muted/30">
                   <div>
                     <p className="text-sm font-medium text-foreground">{m.name}</p>
                     <p className="text-xs text-muted-foreground">{m.email} · {m.skill}</p>
@@ -75,7 +75,7 @@ const AdminDashboardPage = () => {
             <h2 className="text-lg font-semibold text-foreground mb-4">Recent Sessions</h2>
             <div className="space-y-3">
               {sessions.map((session) => (
-                <div key={session.id} className="flex items-center justify-between p-3 rounded-lg bg-muted/30">
+                <div key={session.id} className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 p-3 rounded-lg bg-muted/30">
                   <div>
                     <p className="text-sm font-medium text-foreground">{session.skillTitle}</p>
                     <p className="text-xs text-muted-foreground">{session.mentorName} · {session.date}</p>

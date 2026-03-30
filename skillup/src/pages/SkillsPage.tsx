@@ -20,14 +20,14 @@ const SkillsPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Explore Skills</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Explore Skills</h1>
           <p className="text-muted-foreground mt-1">Discover skills taught by expert mentors</p>
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 mb-8">
-          <div className="relative flex-1 max-w-md">
+          <div className="relative flex-1 w-full sm:max-w-md">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
             <Input placeholder="Search skills..." value={search} onChange={(e) => setSearch(e.target.value)} className="pl-10" />
           </div>
@@ -47,7 +47,7 @@ const SkillsPage = () => {
           ))}
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {filtered.map((skill) => (
             <SkillCard key={skill.id} skill={skill} />
           ))}

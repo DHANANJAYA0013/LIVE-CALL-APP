@@ -4,26 +4,31 @@ import { BookOpen, Eye, EyeOff } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import signinBackground from "@/Assets/background_signin.png";
 
 const SigninPage = () => {
   const [showPassword, setShowPassword] = useState(false);
 
   return (
     <div className="min-h-screen bg-background flex">
-      <div className="hidden lg:flex lg:w-1/2 gradient-primary items-center justify-center p-12">
-        <div className="max-w-md text-primary-foreground">
+      <div
+        className="hidden lg:flex lg:w-1/2 items-center justify-center p-10 xl:p-12 bg-cover bg-center bg-no-repeat relative"
+        style={{ backgroundImage: `url(${signinBackground})` }}
+      >
+        <div className="absolute inset-0 bg-black/35" />
+        <div className="max-w-md text-primary-foreground relative z-10">
           <div className="flex items-center gap-2 mb-8">
             <div className="w-10 h-10 rounded-xl bg-primary-foreground/20 flex items-center justify-center">
               <BookOpen className="w-5 h-5 text-primary-foreground" />
             </div>
             <span className="text-2xl font-bold">SkillBridge</span>
           </div>
-          <h2 className="text-3xl font-bold mb-4">Welcome back</h2>
+          <h2 className="text-3xl xl:text-4xl font-bold mb-4">Welcome back</h2>
           <p className="text-primary-foreground/70">Continue your learning journey. Your mentors and sessions are waiting for you.</p>
         </div>
       </div>
 
-      <div className="flex-1 flex items-center justify-center p-8">
+      <div className="flex-1 flex items-center justify-center px-4 sm:px-8 py-8">
         <div className="w-full max-w-md space-y-6">
           <div className="lg:hidden flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
@@ -31,7 +36,7 @@ const SigninPage = () => {
             </div>
             <span className="text-lg font-bold text-foreground">SkillBridge</span>
           </div>
-          <div className="flex items-start justify-between gap-3">
+          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
             <div>
               <h1 className="text-2xl font-bold text-foreground">Sign in</h1>
               <p className="text-muted-foreground mt-1">Enter your credentials to continue</p>
@@ -54,7 +59,7 @@ const SigninPage = () => {
                 </button>
               </div>
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <label className="flex items-center gap-2 text-sm">
                 <input type="checkbox" className="rounded border-border" />
                 <span className="text-muted-foreground">Remember me</span>

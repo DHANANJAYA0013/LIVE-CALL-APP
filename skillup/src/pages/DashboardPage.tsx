@@ -19,15 +19,15 @@ const DashboardPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         {/* Welcome */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold text-foreground">Welcome back, Alex! 👋</h1>
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Welcome back, Alex! 👋</h1>
           <p className="text-muted-foreground mt-1">Here's what's happening with your learning journey</p>
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
           {statCards.map((stat) => (
             <div key={stat.label} className="bg-card rounded-xl shadow-card border border-border/50 p-5">
               <div className="flex items-center justify-between mb-3">
@@ -50,17 +50,17 @@ const DashboardPage = () => {
             </div>
             <div className="space-y-3">
               {upcomingSessions.map((session) => (
-                <div key={session.id} className="bg-card rounded-xl shadow-card border border-border/50 p-5 flex items-center justify-between">
-                  <div className="flex items-center gap-4">
+                <div key={session.id} className="bg-card rounded-xl shadow-card border border-border/50 p-4 sm:p-5 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                  <div className="flex items-center gap-4 min-w-0">
                     <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
                       <Video className="w-5 h-5 text-primary" />
                     </div>
-                    <div>
+                    <div className="min-w-0">
                       <h3 className="font-medium text-foreground">{session.skillTitle}</h3>
-                      <p className="text-sm text-muted-foreground">with {session.mentorName}</p>
+                      <p className="text-sm text-muted-foreground truncate">with {session.mentorName}</p>
                     </div>
                   </div>
-                  <div className="text-right">
+                  <div className="text-left sm:text-right">
                     <div className="text-sm font-medium text-foreground">{session.date}</div>
                     <div className="text-xs text-muted-foreground">{session.time}</div>
                   </div>

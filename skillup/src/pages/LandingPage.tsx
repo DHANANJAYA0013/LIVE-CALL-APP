@@ -8,6 +8,7 @@ import SkillCard from "@/components/SkillCard";
 import { mentors, skills, categories } from "@/data/mockData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import heroBackground from "@/Assets/background_1.png";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -39,8 +40,13 @@ const LandingPage = () => {
 
       {/* Hero */}
       <section className="relative overflow-hidden">
+        <div
+          className="absolute inset-0 bg-center bg-cover bg-no-repeat"
+          style={{ backgroundImage: `url(${heroBackground})` }}
+        />
+        <div className="absolute inset-0 bg-background/10" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(239_84%_67%/0.08),transparent_60%)]" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 pb-16 sm:pb-24 relative">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             initial="hidden"
@@ -51,20 +57,20 @@ const LandingPage = () => {
                 <Zap className="w-3.5 h-3.5" /> Community-Powered Learning
               </span>
             </motion.div>
-            <motion.h1 variants={fadeUp} custom={1} className="text-4xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-6">
+            <motion.h1 variants={fadeUp} custom={1} className="text-3xl sm:text-5xl lg:text-6xl font-bold text-foreground leading-tight mb-5 sm:mb-6">
               Learn Any Skill From{" "}
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary">
                 Real Experts
               </span>
             </motion.h1>
-            <motion.p variants={fadeUp} custom={2} className="text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
+            <motion.p variants={fadeUp} custom={2} className="text-base sm:text-lg text-muted-foreground max-w-2xl mx-auto mb-8">
               Connect with experienced mentors, book personalized sessions, and accelerate your growth in programming, design, music, and more.
             </motion.p>
 
             {/* Search Bar */}
             <motion.div variants={fadeUp} custom={3} className="max-w-xl mx-auto mb-8">
-              <div className="glass rounded-xl p-2 flex items-center gap-2 shadow-elevated">
-                <div className="flex-1 flex items-center gap-2 px-3">
+              <div className="glass rounded-xl p-2 flex flex-col sm:flex-row items-stretch sm:items-center gap-2 shadow-elevated">
+                <div className="flex-1 flex items-center gap-2 px-3 min-w-0">
                   <Search className="w-5 h-5 text-muted-foreground" />
                   <input
                     type="text"
@@ -72,7 +78,7 @@ const LandingPage = () => {
                     className="flex-1 bg-transparent outline-none text-foreground placeholder:text-muted-foreground py-2"
                   />
                 </div>
-                <Button className="gradient-primary text-primary-foreground border-0 px-6">
+                <Button className="gradient-primary text-primary-foreground border-0 px-6 w-full sm:w-auto">
                   Search
                 </Button>
               </div>
@@ -97,7 +103,7 @@ const LandingPage = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.6, duration: 0.5 }}
-            className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto"
+            className="mt-14 sm:mt-20 grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 max-w-3xl mx-auto"
           >
             {stats.map((stat) => (
               <div key={stat.label} className="text-center">
@@ -110,11 +116,11 @@ const LandingPage = () => {
       </section>
 
       {/* Featured Mentors */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8 sm:mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-foreground">Top Mentors</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Top Mentors</h2>
               <p className="text-muted-foreground mt-2">Learn from the best in their fields</p>
             </div>
             <Link to="/mentors" className="text-sm font-medium text-primary hover:underline hidden sm:block">
@@ -130,11 +136,11 @@ const LandingPage = () => {
       </section>
 
       {/* Featured Skills */}
-      <section className="py-20 bg-muted/40">
+      <section className="py-14 sm:py-20 bg-muted/40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-end justify-between mb-10">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-3 mb-8 sm:mb-10">
             <div>
-              <h2 className="text-3xl font-bold text-foreground">Popular Skills</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Popular Skills</h2>
               <p className="text-muted-foreground mt-2">Most sought-after skills this month</p>
             </div>
             <Link to="/skills" className="text-sm font-medium text-primary hover:underline hidden sm:block">
@@ -150,10 +156,10 @@ const LandingPage = () => {
       </section>
 
       {/* Benefits */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-14">
-            <h2 className="text-3xl font-bold text-foreground">Why SkillBridge?</h2>
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground">Why SkillBridge?</h2>
             <p className="text-muted-foreground mt-2 max-w-lg mx-auto">Everything you need for a great learning experience</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -171,10 +177,10 @@ const LandingPage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section className="py-14 sm:py-20">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="gradient-primary rounded-2xl p-12 text-center">
-            <h2 className="text-3xl font-bold text-primary-foreground mb-4">Ready to Start Learning?</h2>
+          <div className="gradient-primary rounded-2xl p-6 sm:p-10 md:p-12 text-center">
+            <h2 className="text-2xl sm:text-3xl font-bold text-primary-foreground mb-4">Ready to Start Learning?</h2>
             <p className="text-primary-foreground/80 mb-8 max-w-lg mx-auto">Join thousands of learners and mentors building skills together.</p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link to="/signup">
