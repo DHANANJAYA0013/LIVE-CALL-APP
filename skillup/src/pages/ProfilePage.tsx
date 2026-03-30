@@ -12,7 +12,7 @@ const profileSkills = ["React", "TypeScript", "System Design", "GraphQL"];
 
 const ProfilePage = () => {
   return (
-    <div className="min-h-screen bg-[#f5f7fb]">
+    <div className="min-h-screen bg-background">
       <Navbar />
 
       <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
@@ -66,7 +66,7 @@ const ProfilePage = () => {
                   <div className="space-y-1.5">
                     <Label>Role</Label>
                     <Select defaultValue="teacher">
-                      <SelectTrigger className="bg-white">
+                      <SelectTrigger className="bg-card">
                         <SelectValue placeholder="Select a role" />
                       </SelectTrigger>
                       <SelectContent>
@@ -82,7 +82,7 @@ const ProfilePage = () => {
                       id="bio"
                       rows={4}
                       defaultValue="Full-stack mentor helping learners master React, TypeScript, and system design through real-world projects."
-                      className="bg-white"
+                      className="bg-card"
                     />
                   </div>
                 </div>
@@ -99,7 +99,7 @@ const ProfilePage = () => {
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex flex-col gap-2">
-                  <Input placeholder="e.g. Next.js, Data Structures" className="bg-white" />
+                  <Input placeholder="e.g. Next.js, Data Structures" className="bg-card" />
                   <div className="flex items-center justify-end text-xs text-muted-foreground">Press Enter to add</div>
                 </div>
                 <div className="flex flex-wrap gap-2">
@@ -107,7 +107,7 @@ const ProfilePage = () => {
                     <Badge
                       key={skill}
                       variant="outline"
-                      className="bg-[#f4f5ff] text-[#2f3c7e] border-transparent px-3 py-1"
+                      className="bg-primary/10 text-primary border-primary/20 px-3 py-1"
                     >
                       {skill}
                       <span className="ml-1 text-muted-foreground">×</span>
@@ -129,35 +129,35 @@ const ProfilePage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div className="space-y-1.5">
                     <Label htmlFor="sessionTitle">Session title</Label>
-                    <Input id="sessionTitle" placeholder="e.g. Advanced TypeScript" className="bg-white" />
+                    <Input id="sessionTitle" placeholder="e.g. Advanced TypeScript" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="instructorName">Instructor name</Label>
-                    <Input id="instructorName" placeholder="Your name" className="bg-white" />
+                    <Input id="instructorName" placeholder="Your name" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="instructorId">Instructor ID</Label>
-                    <Input id="instructorId" placeholder="e.g. TCH-204" className="bg-white" />
+                    <Input id="instructorId" placeholder="e.g. TCH-204" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="sessionDate">Date</Label>
-                    <Input id="sessionDate" type="date" className="bg-white" />
+                    <Input id="sessionDate" type="date" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="startTime">Start time</Label>
-                    <Input id="startTime" type="time" className="bg-white" />
+                    <Input id="startTime" type="time" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="duration">Duration</Label>
-                    <Input id="duration" placeholder="e.g. 60 minutes" className="bg-white" />
+                    <Input id="duration" placeholder="e.g. 60 minutes" className="bg-card" />
                   </div>
                   <div className="sm:col-span-2 space-y-1.5">
                     <Label htmlFor="description">Description</Label>
-                    <Textarea id="description" rows={3} placeholder="What will you cover?" className="bg-white" />
+                    <Textarea id="description" rows={3} placeholder="What will you cover?" className="bg-card" />
                   </div>
                   <div className="sm:col-span-2 space-y-1.5">
                     <Label htmlFor="sessionLink">Session link / room ID</Label>
-                    <Input id="sessionLink" placeholder="Paste meeting link or room code" className="bg-white" />
+                    <Input id="sessionLink" placeholder="Paste meeting link or room code" className="bg-card" />
                   </div>
                 </div>
               </CardContent>
@@ -175,15 +175,15 @@ const ProfilePage = () => {
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="space-y-1.5">
                     <Label htmlFor="currentPassword">Current password</Label>
-                    <Input id="currentPassword" type="password" defaultValue="********" className="bg-white" />
+                    <Input id="currentPassword" type="password" defaultValue="********" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="newPassword">New password</Label>
-                    <Input id="newPassword" type="password" defaultValue="********" className="bg-white" />
+                    <Input id="newPassword" type="password" defaultValue="********" className="bg-card" />
                   </div>
                   <div className="space-y-1.5">
                     <Label htmlFor="confirmPassword">Confirm new password</Label>
-                    <Input id="confirmPassword" type="password" defaultValue="********" className="bg-white" />
+                    <Input id="confirmPassword" type="password" defaultValue="********" className="bg-card" />
                   </div>
                 </div>
               </CardContent>
