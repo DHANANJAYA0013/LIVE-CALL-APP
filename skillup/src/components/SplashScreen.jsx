@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { Video, Wifi } from "lucide-react";
 import "../SplashScreen.css";
 
-export default function SplashScreen({ appName = "NexMeet", message = "Connecting" }) {
+export default function SplashScreen({ appName = "SkillBridge", message = "Connecting" }) {
   return (
     <div className="splash-screen" role="status" aria-live="polite">
       <div className="splash-bg-glow splash-bg-glow-1" />

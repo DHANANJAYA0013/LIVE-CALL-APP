@@ -12,15 +12,21 @@ const SignupPage = () => {
   const [role, setRole] = useState<"learner" | "teacher">("learner");
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top,_#f3f7ff,_transparent_45%),radial-gradient(circle_at_bottom,_#f9fbff,_transparent_40%)]">
-      <div className="grid min-h-screen lg:grid-cols-2">
+    <div className="relative min-h-screen overflow-hidden bg-[radial-gradient(circle_at_top,_#f3f7ff,_transparent_45%),radial-gradient(circle_at_bottom,_#f9fbff,_transparent_40%)]">
+      <div
+        className="absolute inset-0 lg:hidden bg-cover bg-center bg-no-repeat"
+        style={{ backgroundImage: `url(${signupBackground})` }}
+      />
+      <div className="absolute inset-0 lg:hidden bg-black/35" />
+
+      <div className="relative z-10 grid min-h-screen lg:grid-cols-2">
         {/* Left panel */}
         <div
           className="hidden lg:flex items-center justify-center p-10 xl:p-16 bg-cover bg-right bg-no-repeat relative"
           style={{ backgroundImage: `url(${signupBackground})` }}
         >
           <div className="absolute inset-0 bg-gradient-to-r from-black/45 via-black/20 to-black/10" />
-          <div className="max-w-md text-primary-foreground space-y-6 relative z-10">
+          <div className="max-w-md text-primary-foreground space-y-6 relative z-10 lg:ml-48 xl:ml-64">
             <div className="flex items-center gap-2">
               <div className="w-11 h-11 rounded-2xl bg-primary-foreground/20 flex items-center justify-center">
                 <BookOpen className="w-5 h-5 text-primary-foreground" />
@@ -39,7 +45,7 @@ const SignupPage = () => {
 
         {/* Form */}
         <div className="flex items-center justify-center px-4 sm:px-6 py-8 sm:py-12 lg:px-16">
-          <Card className="w-full max-w-md shadow-2xl border-border/60">
+          <Card className="w-full max-w-md shadow-2xl border-border/60 bg-background/65 backdrop-blur-sm lg:bg-card lg:backdrop-blur-none">
             <CardHeader className="space-y-4">
               <div className="lg:hidden flex items-center gap-2">
                 <div className="w-9 h-9 rounded-xl gradient-primary flex items-center justify-center">
@@ -96,7 +102,7 @@ const SignupPage = () => {
                       {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
                     </button>
                   </div>
-                </div>
+                </div><br />
                 <Link to="/admin-dashboard">
                   <Button type="submit" className="w-full gradient-primary text-primary-foreground border-0 shadow-md hover:opacity-90">
                     Create Account

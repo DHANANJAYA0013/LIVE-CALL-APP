@@ -26,7 +26,7 @@ export default function Room({ localStream, remoteStreams, roomId, onLeave }) {
         </div>
 
         <div>
-          <span className="text-sm sm:text-base font-semibold text-foreground">NexMeet</span>
+          <span className="text-sm sm:text-base font-semibold text-foreground">SkillBridge</span>
           <p className="text-xs text-muted-foreground">Live mentor room</p>
         </div>
 

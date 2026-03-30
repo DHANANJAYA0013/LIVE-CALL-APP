@@ -15,5 +15,5 @@ export default function LiveSplashPage() {
     };
   }, [navigate]);
 
-  return <SplashScreen appName="NexMeet" message="Connecting" />;
+  return <SplashScreen appName="SkillBridge" message="Connecting" />;
 }
