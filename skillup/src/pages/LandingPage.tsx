@@ -1,8 +1,11 @@
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Search, Users, BookOpen, Award, Zap, Shield, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { ISourceOptions } from "@tsparticles/engine";
 import MentorCard from "@/components/MentorCard";
 import SkillCard from "@/components/SkillCard";
 import { mentors, skills, categories } from "@/data/mockData";
@@ -30,12 +33,94 @@ const stats = [
 ];
 
 const LandingPage = () => {
+  const [particlesReady, setParticlesReady] = useState(false);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "auto" });
+
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesReady(true);
+    });
   }, []);
 
+  const particlesOptions = useMemo<ISourceOptions>(
+    () => ({
+      background: {
+        color: {
+          value: "transparent",
+        },
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "grab",
+          },
+          resize: {
+            enable: true,
+          },
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: {
+              opacity: 0.35,
+            },
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: "#a0b1f3",
+        },
+        links: {
+          color: "#95abf3",
+          distance: 140,
+          enable: true,
+          opacity: 0.35,
+          width: 1,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "out",
+          },
+          random: false,
+          speed: 0.7,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+          },
+          value: 45,
+        },
+        opacity: {
+          value: 0.42,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 3 },
+        },
+      },
+      detectRetina: true,
+    }),
+    [],
+  );
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-95" aria-hidden="true">
+        {particlesReady && <Particles id="landing-particles" className="h-full w-full" options={particlesOptions} />}
+      </div>
+
+      <div className="relative z-10">
       <Navbar />
 
       {/* Hero */}
@@ -199,6 +284,7 @@ const LandingPage = () => {
       </section>
 
       <Footer />
+      </div>
     </div>
   );
 };

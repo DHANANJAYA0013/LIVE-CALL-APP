@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,6 +14,7 @@ import SkillsPage from "./pages/SkillsPage";
 import DashboardPage from "./pages/DashboardPage";
 import TeacherDashboardPage from "./pages/TeacherDashboardPage";
 import AdminDashboardPage from "./pages/AdminDashboardPage";
+import AdminLoginPage from "./pages/AdminLoginPage";
 import ProfilePage from "./pages/ProfilePage";
 import NotificationsPage from "./pages/NotificationsPage";
 import NotFound from "./pages/NotFound";
@@ -24,10 +25,11 @@ import LiveSplashPage from "./pages/LiveSplashPage";
 import ScrollToTop from "./components/ScrollToTop";
 
 const queryClient = new QueryClient();
+const isAdminAuthenticated = () => localStorage.getItem("isAdminAuthenticated") === "true";
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+    <ThemeProvider attribute="class" forcedTheme="light" enableSystem={false}>
       <TooltipProvider>
         <Toaster />
         <Sonner />
@@ -45,7 +47,11 @@ const App = () => (
             <Route path="/skills" element={<SkillsPage />} />
             <Route path="/dashboard" element={<DashboardPage />} />
             <Route path="/teacher-dashboard" element={<TeacherDashboardPage />} />
-            <Route path="/admin-dashboard" element={<AdminDashboardPage />} />
+            <Route path="/admin-login" element={<AdminLoginPage />} />
+            <Route
+              path="/admin-dashboard"
+              element={isAdminAuthenticated() ? <AdminDashboardPage /> : <Navigate to="/admin-login" replace />}
+            />
             <Route path="/profile" element={<ProfilePage />} />
             <Route path="/notifications" element={<NotificationsPage />} />
             <Route path="/chat/:id" element={<ChatPage />} />

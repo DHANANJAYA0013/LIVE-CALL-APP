@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Navbar from "@/components/Navbar";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
@@ -7,15 +8,98 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const profileSkills = ["React", "TypeScript", "System Design", "GraphQL"];
 
-const ProfilePage = () => {
-  return (
-    <div className="min-h-screen bg-background">
-      <Navbar />
+const particlesOptions = {
+  background: {
+    color: {
+      value: "transparent",
+    },
+  },
+  fpsLimit: 60,
+  interactivity: {
+    events: {
+      onHover: {
+        enable: true,
+        mode: "grab",
+      },
+      resize: {
+        enable: true,
+      },
+    },
+    modes: {
+      grab: {
+        distance: 140,
+        links: {
+          opacity: 0.3,
+        },
+      },
+    },
+  },
+  particles: {
+    color: {
+      value: "#6b8cff",
+    },
+    links: {
+      color: "#8aa6ff",
+      distance: 140,
+      enable: true,
+      opacity: 0.25,
+      width: 1,
+    },
+    move: {
+      direction: "none",
+      enable: true,
+      outModes: {
+        default: "out",
+      },
+      random: false,
+      speed: 0.8,
+      straight: false,
+    },
+    number: {
+      density: {
+        enable: true,
+      },
+      value: 60,
+    },
+    opacity: {
+      value: 0.25,
+    },
+    shape: {
+      type: "circle",
+    },
+    size: {
+      value: { min: 1, max: 3 },
+    },
+  },
+  detectRetina: true,
+};
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
+const ProfilePage = () => {
+  const [particlesReady, setParticlesReady] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesReady(true);
+    });
+  }, []);
+
+  return (
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-70" aria-hidden="true">
+        {particlesReady && <Particles id="profile-particles" className="h-full w-full" options={particlesOptions} />}
+      </div>
+
+      <div className="relative z-10">
+        <Navbar />
+
+        <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10 space-y-8">
         <div>
           <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Profile</h1>
           <p className="text-muted-foreground mt-1">Edit your profile, update your password, and manage teaching skills.</p>
@@ -190,7 +274,8 @@ const ProfilePage = () => {
             </Card>
           </div>
         </div>
-      </main>
+        </main>
+      </div>
     </div>
   );
 };

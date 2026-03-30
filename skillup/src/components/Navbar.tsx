@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
-import { Search, Bell, Menu, X, BookOpen, Video, Sun, Moon } from "lucide-react";
+import { Search, Bell, Menu, X, BookOpen, Video } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { useTheme } from "next-themes";
 
 const navLinks = [
   { label: "Find Mentors", path: "/mentors" },
@@ -14,14 +13,8 @@ const navLinks = [
 const Navbar = () => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const location = useLocation();
-  const { resolvedTheme, setTheme } = useTheme();
   const isProfile = location.pathname.startsWith("/profile");
   const isNotifications = location.pathname.startsWith("/notifications");
-  const isDark = resolvedTheme === "dark";
-
-  const toggleTheme = () => {
-    setTheme(isDark ? "light" : "dark");
-  };
 
   const handleBrandClick = () => {
     setMobileOpen(false);
@@ -68,16 +61,6 @@ const Navbar = () => {
                 Start Live
               </Button>
             </Link>
-            <Button
-              variant="outline"
-              size="icon"
-              onClick={toggleTheme}
-              className="h-9 w-9"
-              aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-              title={isDark ? "Light mode" : "Dark mode"}
-            >
-              {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            </Button>
             <div className="relative">
               {/* <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
               <input
@@ -121,16 +104,6 @@ const Navbar = () => {
       {/* Mobile menu */}
       {mobileOpen && (
         <div className="md:hidden border-t border-border bg-card px-3 sm:px-4 py-4 space-y-2 max-h-[calc(100vh-4rem)] overflow-y-auto">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={toggleTheme}
-            className="w-full justify-center gap-2"
-            aria-label={isDark ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {isDark ? <Sun className="h-4 w-4" /> : <Moon className="h-4 w-4" />}
-            {isDark ? "Light Mode" : "Dark Mode"}
-          </Button>
           <Link to="/webrtc/splash" onClick={() => setMobileOpen(false)}>
             <Button 
               size="sm" 

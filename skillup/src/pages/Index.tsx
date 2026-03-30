@@ -1,14 +1,107 @@
+import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, BookOpen, Sparkles, Rocket, ShieldCheck, Wifi, Layers } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { ISourceOptions } from "@tsparticles/engine";
 
 const Index = () => {
+  const [particlesReady, setParticlesReady] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesReady(true);
+    });
+  }, []);
+
+  const particlesOptions = useMemo<ISourceOptions>(
+    () => ({
+      background: {
+        color: {
+          value: "transparent",
+        },
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "grab",
+          },
+          resize: {
+            enable: true,
+          },
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: {
+              opacity: 0.35,
+            },
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: "#a0b1f3",
+        },
+        links: {
+          color: "#95abf3",
+          distance: 140,
+          enable: true,
+          opacity: 0.35,
+          width: 1,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "out",
+          },
+          random: false,
+          speed: 0.7,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+          },
+          value: 45,
+        },
+        opacity: {
+          value: 0.42,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 3 },
+        },
+      },
+      detectRetina: true,
+    }),
+    [],
+  );
+
   return (
     <div className="min-h-screen bg-background">
       <main className="relative overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-95" aria-hidden="true">
+          {particlesReady && <Particles id="index-particles" className="h-full w-full" options={particlesOptions} />}
+        </div>
+
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(239_84%_67%/0.1),transparent_60%)]" />
 
-        <section className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-14 sm:pb-16 text-center">
+        <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-14 sm:pb-16 text-center">
+          <Link to="/signup" className="absolute top-4 right-4 sm:top-6 sm:right-6 lg:right-8">
+            <Button size="lg" className="gradient-primary text-primary-foreground border-0 gap-2 hover:opacity-90">
+              Get Started <ArrowRight className="h-4 w-4" />
+            </Button>
+          </Link>
+
           <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-4 py-1.5 text-sm font-medium text-primary">
             <Sparkles className="h-4 w-4" /> Welcome to SkillBridge
           </span>
@@ -29,15 +122,10 @@ const Index = () => {
                 <BookOpen className="h-4 w-4" /> Sign In
               </Button>
             </Link>
-            <Link to="/signup">
-              <Button size="lg" className="gradient-primary text-primary-foreground border-0 gap-2 hover:opacity-90">
-                Get Started <ArrowRight className="h-4 w-4" />
-              </Button>
-            </Link>
           </div>
         </section>
 
-        <section className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16">
+        <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16">
           <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             <article className="rounded-2xl border border-border/60 bg-card/70 backdrop-blur-sm p-5 shadow-card">
               <div className="w-10 h-10 rounded-xl gradient-primary text-primary-foreground grid place-items-center mb-3">
@@ -73,7 +161,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="relative max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16">
+        <section className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-14 sm:pb-16">
           <div className="rounded-2xl border border-primary/20 bg-primary/5 p-6 sm:p-8 text-center">
             <p className="text-sm uppercase tracking-wider text-primary font-semibold">What makes it interesting</p>
             <p className="mt-2 text-base sm:text-lg text-foreground">
@@ -83,7 +171,7 @@ const Index = () => {
           </div>
         </section>
 
-        <section className="relative max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 text-center">
+        <section className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-20 text-center">
           <Link to="/landing" className="text-sm font-medium text-primary hover:underline">
             Explore the platform first &rarr;
           </Link>

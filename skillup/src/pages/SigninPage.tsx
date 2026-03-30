@@ -87,6 +87,10 @@ const SigninPage = () => {
               Don't have an account?{" "}
               <Link to="/signup" className="text-primary font-medium hover:underline">Sign up</Link>
             </p>
+            <p className="text-sm text-center text-muted-foreground">
+              Admin?{" "}
+              <Link to="/admin-login" className="text-primary font-medium hover:underline">Use admin login</Link>
+            </p>
           </CardContent>
         </Card>
       </div>

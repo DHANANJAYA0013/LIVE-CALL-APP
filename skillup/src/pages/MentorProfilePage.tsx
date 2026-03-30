@@ -1,7 +1,11 @@
+import { useEffect, useMemo, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { Star, Clock, Calendar, MapPin, ArrowLeft, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
+import type { ISourceOptions } from "@tsparticles/engine";
 import Navbar from "@/components/Navbar";
 import { mentors, reviews } from "@/data/mockData";
 
@@ -9,20 +13,110 @@ const MentorProfilePage = () => {
   const { id } = useParams();
   const mentor = mentors.find((m) => m.id === id);
 
+  const [particlesReady, setParticlesReady] = useState(false);
+
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setParticlesReady(true);
+    });
+  }, []);
+
+  const particlesOptions = useMemo<ISourceOptions>(
+    () => ({
+      background: {
+        color: {
+          value: "transparent",
+        },
+      },
+      fpsLimit: 60,
+      interactivity: {
+        events: {
+          onHover: {
+            enable: true,
+            mode: "grab",
+          },
+          resize: {
+            enable: true,
+          },
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            links: {
+              opacity: 0.35,
+            },
+          },
+        },
+      },
+      particles: {
+        color: {
+          value: "#a0b1f3",
+        },
+        links: {
+          color: "#95abf3",
+          distance: 140,
+          enable: true,
+          opacity: 0.35,
+          width: 1,
+        },
+        move: {
+          direction: "none",
+          enable: true,
+          outModes: {
+            default: "out",
+          },
+          random: false,
+          speed: 0.7,
+          straight: false,
+        },
+        number: {
+          density: {
+            enable: true,
+          },
+          value: 45,
+        },
+        opacity: {
+          value: 0.42,
+        },
+        shape: {
+          type: "circle",
+        },
+        size: {
+          value: { min: 1, max: 3 },
+        },
+      },
+      detectRetina: true,
+    }),
+    [],
+  );
+
   if (!mentor) {
     return (
-      <div className="min-h-screen bg-background">
-        <Navbar />
-        <div className="text-center py-20">
-          <p className="text-muted-foreground">Mentor not found.</p>
-          <Link to="/mentors" className="text-primary hover:underline mt-2 inline-block">Back to Mentors</Link>
+      <div className="relative min-h-screen bg-background overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none opacity-95" aria-hidden="true">
+          {particlesReady && <Particles id="mentor-profile-particles-empty" className="h-full w-full" options={particlesOptions} />}
+        </div>
+
+        <div className="relative z-10">
+          <Navbar />
+          <div className="text-center py-20">
+            <p className="text-muted-foreground">Mentor not found.</p>
+            <Link to="/mentors" className="text-primary hover:underline mt-2 inline-block">Back to Mentors</Link>
+          </div>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="relative min-h-screen bg-background overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none opacity-95" aria-hidden="true">
+        {particlesReady && <Particles id="mentor-profile-particles" className="h-full w-full" options={particlesOptions} />}
+      </div>
+
+      <div className="relative z-10">
       <Navbar />
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-10">
         <Link to="/mentors" className="inline-flex items-center gap-1 text-sm text-muted-foreground hover:text-foreground mb-6">
@@ -136,6 +230,7 @@ const MentorProfilePage = () => {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </div>
   );
