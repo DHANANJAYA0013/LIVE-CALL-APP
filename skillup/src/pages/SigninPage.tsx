@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import signinBackground from "@/Assets/background_signin.png";
+import signinBackground from "@/Assets/background_signin.webp";
 
 const SigninPage = () => {
   const [showPassword, setShowPassword] = useState(false);

@@ -11,7 +11,7 @@ import SkillCard from "@/components/SkillCard";
 import { mentors, skills, categories } from "@/data/mockData";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import heroBackground from "@/Assets/background_1.png";
+import heroBackground from "@/Assets/background_1.webp";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },

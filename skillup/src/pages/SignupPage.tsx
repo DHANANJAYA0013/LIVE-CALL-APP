@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import signupBackground from "@/Assets/background_signup.png";
+import signupBackground from "@/Assets/background_signup.webp";
 
 const SignupPage = () => {
   const [showPassword, setShowPassword] = useState(false);
