@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import SkillCard from "@/components/SkillCard";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { skills, categories } from "@/data/mockData";
 
 const SkillsPage = () => {
@@ -58,6 +59,7 @@ const SkillsPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

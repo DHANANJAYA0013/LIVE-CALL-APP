@@ -23,12 +23,17 @@ const Navbar = () => {
     setTheme(isDark ? "light" : "dark");
   };
 
+  const handleBrandClick = () => {
+    setMobileOpen(false);
+    window.scrollTo({ top: 0, behavior: "auto" });
+  };
+
   return (
     <nav className="sticky top-0 z-50 glass border-b border-border/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
+          <Link to="/landing" onClick={handleBrandClick} className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-lg gradient-primary flex items-center justify-center">
               <BookOpen className="w-4 h-4 text-primary-foreground" />
             </div>
@@ -103,14 +108,6 @@ const Navbar = () => {
                 />
                 <AvatarFallback>DH</AvatarFallback>
               </Avatar>
-            </Link>
-            <Link to="/signin">
-              <Button variant="ghost" size="sm">Sign In</Button>
-            </Link>
-            <Link to="/signup">
-              <Button size="sm" className="gradient-primary text-primary-foreground border-0 hover:opacity-90">
-                Get Started
-              </Button>
             </Link>
           </div>
 
@@ -192,10 +189,6 @@ const Navbar = () => {
               <span className="text-xs text-muted-foreground">View and update</span>
             </div>
           </Link>
-          <div className="pt-2 flex gap-2">
-            <Link to="/signin" className="flex-1"><Button variant="outline" className="w-full" size="sm">Sign In</Button></Link>
-            <Link to="/signup" className="flex-1"><Button className="w-full gradient-primary text-primary-foreground border-0" size="sm">Get Started</Button></Link>
-          </div>
         </div>
       )}
     </nav>

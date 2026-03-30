@@ -4,6 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import MentorCard from "@/components/MentorCard";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 import { mentors, categories } from "@/data/mockData";
 
 const MentorsPage = () => {
@@ -65,6 +66,7 @@ const MentorsPage = () => {
           </div>
         )}
       </div>
+      <Footer />
     </div>
   );
 };

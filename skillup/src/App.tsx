@@ -4,6 +4,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { ThemeProvider } from "@/components/theme-provider";
+import Index from "./pages/Index";
 import LandingPage from "./pages/LandingPage";
 import SignupPage from "./pages/SignupPage";
 import SigninPage from "./pages/SigninPage";
@@ -31,9 +32,10 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Index />} />
+            <Route path="/landing" element={<LandingPage />} />
             <Route path="/webrtc/splash" element={<LiveSplashPage />} />
             <Route path="/webrtc" element={<WebRTCPage />} />
-            <Route path="/" element={<LandingPage />} />
             <Route path="/signup" element={<SignupPage />} />
             <Route path="/signin" element={<SigninPage />} />
             <Route path="/mentors" element={<MentorsPage />} />

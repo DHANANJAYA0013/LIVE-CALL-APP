@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Search, Users, BookOpen, Award, Zap, Shield, TrendingUp } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -6,6 +7,7 @@ import MentorCard from "@/components/MentorCard";
 import SkillCard from "@/components/SkillCard";
 import { mentors, skills, categories } from "@/data/mockData";
 import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 20 },
@@ -27,6 +29,10 @@ const stats = [
 ];
 
 const LandingPage = () => {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
@@ -186,20 +192,7 @@ const LandingPage = () => {
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="border-t border-border py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-            <div className="flex items-center gap-2">
-              <div className="w-7 h-7 rounded-lg gradient-primary flex items-center justify-center">
-                <BookOpen className="w-3.5 h-3.5 text-primary-foreground" />
-              </div>
-              <span className="font-bold text-foreground">SkillBridge</span>
-            </div>
-            <p className="text-sm text-muted-foreground">© 2026 SkillBridge. All rights reserved.</p>
-          </div>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 };
