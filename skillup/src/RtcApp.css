@@ -20,16 +20,15 @@
   --display: "Syne", sans-serif;
 }
 
-/* ── Reset ──────────────────────────────────────────────────────────────── */
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html, body, #root, .app {
-  height: 100%;
-  width: 100%;
-  overflow: hidden;
+/* ── Reset (Scoped to WebRTC route) ─────────────────────────────────────── */
+.rtc-app, .rtc-app *, .rtc-app *::before, .rtc-app *::after {
+  box-sizing: border-box;
 }
 
-body {
+.rtc-app {
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
   background: var(--bg);
   color: var(--text);
   font-family: var(--display);

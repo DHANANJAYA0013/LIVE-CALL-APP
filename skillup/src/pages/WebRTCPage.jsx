@@ -15,7 +15,7 @@ export default function WebRTCPage() {
   } = useWebRTC();
 
   return (
-    <div className="app">
+    <div className="rtc-app">
       {!isInCall && (
         <Lobby
           onJoin={(room) => {
