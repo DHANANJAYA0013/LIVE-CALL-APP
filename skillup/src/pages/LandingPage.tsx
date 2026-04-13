@@ -124,14 +124,14 @@ const LandingPage = () => {
       <Navbar />
 
       {/* Hero */}
-      <section className="relative overflow-hidden">
+      <section className="relative overflow-hidden min-h-[92vh]">
         <div
           className="absolute inset-0 bg-center bg-cover bg-no-repeat"
           style={{ backgroundImage: `url(${heroBackground})` }}
         />
         <div className="absolute inset-0 bg-background/10" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,hsl(239_84%_67%/0.08),transparent_60%)]" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-14 sm:pt-20 pb-16 sm:pb-24 relative">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 sm:pt-28 pb-24 sm:pb-32 relative">
           <motion.div
             className="max-w-3xl mx-auto text-center"
             initial="hidden"
